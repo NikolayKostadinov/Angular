@@ -13,14 +13,19 @@ import { StoreFirstGuard } from './storeFirst.guard';
 		BrowserModule,
 		StoreModule,
 		RouterModule.forRoot([
-			{ path: 'store', component: StoreComponent, canActivate: [ StoreFirstGuard ] },
-			{ path: "cart", component: CartDetailComponent, canActivate: [ StoreFirstGuard ]},
-			{ path: "checkout", component: CheckoutComponent, canActivate: [ StoreFirstGuard ] },
+			{ path: 'store', component: StoreComponent, canActivate: [StoreFirstGuard] },
+			{ path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard] },
+			{ path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard] },
+			{ path: "admin",
+				loadChildren: () => import("./admin/admin.module")
+					.then(m => m.AdminModule),
+				canActivate: [StoreFirstGuard]
+			},
 			{ path: "**", redirectTo: "/store" }
 		])
 	],
-	providers: [ StoreFirstGuard ],
-	declarations: [ AppComponent ],
-	bootstrap: [ AppComponent ]
+	providers: [StoreFirstGuard],
+	declarations: [AppComponent],
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
