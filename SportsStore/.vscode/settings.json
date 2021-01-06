@@ -1,3 +1,4 @@
 {
-    "terminal.integrated.windowsEnableConpty": false
+    "terminal.integrated.windowsEnableConpty": false,
+    "editor.minimap.enabled": false
 }
